@@ -11,7 +11,7 @@ void terminar_ciclo(int signum){
 
 }
 
-int main(){
+int main {
     signal(2, no_me_matas);
     while(1){
         printf("trabajando \n");
