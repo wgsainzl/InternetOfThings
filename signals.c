@@ -2,21 +2,27 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void * no_me_matas(int signum){
-    printf("Recibi la señal %d\n", signum);
-    printf("No me puedes matar");
+void no_me_matas(int signum) {
+    printf("\nRecibi la senal %d\n", signum);
+    printf("No me puedes matar\n");
 }
 
-void terminar_ciclo(int signum){
-
+int condicion;
+void termina_ciclo(int signum) {
+    printf("Cambiando el valor de la condicion\n");
+    condicion = 20;
 }
 
-int main {
+int main() {
     signal(2, no_me_matas);
-    while(1){
-        printf("trabajando \n");
+    signal(10, termina_ciclo);
+
+    condicion = 1;
+    while(condicion == 1) {
+        printf("Trabajando\n");
         sleep(2);
     }
-    printf("Terminando");
+    
+    printf("Terminando\n");
     return 0;
 }
